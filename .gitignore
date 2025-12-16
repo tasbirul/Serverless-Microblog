@@ -5,6 +5,7 @@
 .terraform.lock.hcl
 terraform.tfstate.d
 *.tfvars
+!dev_env.tfvars
 override.tf
 override.tf.json
 *_override.tf

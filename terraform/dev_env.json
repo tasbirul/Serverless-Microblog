@@ -1,0 +1,7 @@
+{
+    "environment": "dev",
+    "table_name": "ContactMessages-dev",
+    "lambda_create_post_name": "CreatePostFunction-dev",
+    "lambda_get_posts_name": "GetPostsFunction-dev",
+    "api_name": "ContactUsAPI-dev"
+}

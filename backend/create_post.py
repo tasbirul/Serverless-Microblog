@@ -30,6 +30,19 @@ def lambda_handler(event, context):
                     'body': json.dumps({'error': f'Missing required field: {field}'})
                 }
         
+        # Type and Length Validation
+        if not isinstance(body['name'], str) or len(body['name']) > 50:
+             return {
+                'statusCode': 400,
+                'body': json.dumps({'error': 'Name must be a string and less than 50 characters'})
+            }
+            
+        if not isinstance(body['message'], str) or len(body['message']) > 1000:
+             return {
+                'statusCode': 400,
+                'body': json.dumps({'error': 'Message must be a string and less than 1000 characters'})
+            }
+        
         # Create item
         item = {
             'id': str(uuid.uuid4()),

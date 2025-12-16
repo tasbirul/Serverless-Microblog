@@ -60,7 +60,7 @@ data "archive_file" "backend_zip" {
 # Lambda Function: Create Post
 resource "aws_lambda_function" "create_post" {
   filename         = data.archive_file.backend_zip.output_path
-  function_name    = "CreatePostFunction"
+  function_name    = var.lambda_create_post_name
   role             = aws_iam_role.lambda_role.arn
   handler          = "create_post.lambda_handler"
   source_code_hash = data.archive_file.backend_zip.output_base64sha256
@@ -76,7 +76,7 @@ resource "aws_lambda_function" "create_post" {
 # Lambda Function: Get Posts
 resource "aws_lambda_function" "get_posts" {
   filename         = data.archive_file.backend_zip.output_path
-  function_name    = "GetPostsFunction"
+  function_name    = var.lambda_get_posts_name
   role             = aws_iam_role.lambda_role.arn
   handler          = "get_posts.lambda_handler"
   source_code_hash = data.archive_file.backend_zip.output_base64sha256
